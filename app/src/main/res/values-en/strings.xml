@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movie Search</string>
+    <string name="enter_film_name_text">Enter Film Name</string>
+    <string name="search_text">Search</string>
+    <string name="no_film_text">There is no movie matching the search criteria!</string>
+    <string name="movie_title_text">Movie Title</string>
+    <string name="release_date_text">Release Date</string>
+    <string name="app_theme_text">App Theme</string>
+    <string name="choose_app_theme_text">Choose app theme.</string>
+    <string name="light_theme_text">Light</string>
+    <string name="dark_theme_text">Dark</string>
+    <string name="system_theme_text">System Theme</string>
+    <string name="movie_genre_text">Movie Genre</string>
+    <string name="movie_plot">Movie Plot</string>
+</resources>

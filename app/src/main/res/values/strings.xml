@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Movie Search</string>
+    <string name="enter_film_name_text">Film Adı Girin</string>
+    <string name="search_text">Ara</string>
+    <string name="no_film_text">Aranan Kritere Uygun Film Bulunmamaktadır!</string>
+    <string name="movie_title_text">Movie Title</string>
+    <string name="release_date_text">Release Date</string>
+    <string name="app_theme_text">Uygulama Teması</string>
+    <string name="choose_app_theme_text">Uygulama temasını seçiniz.</string>
+    <string name="light_theme_text">Açık</string>
+    <string name="dark_theme_text">Koyu</string>
+    <string name="system_theme_text">Sistem Teması</string>
+    <string name="movie_genre_text">Movie Genre</string>
+    <string name="movie_plot">Movie Plot</string>
+</resources>
