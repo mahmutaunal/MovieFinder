@@ -20,12 +20,12 @@ The android app lets you:
 
 ## Screenshots
 
-[<img src="/readme/Screenshot_20221223_095914.png" align="center"
-width="200"
-    hspace="10" vspace="10">](/readme/Screenshot_20221223_095914.png)
 [<img src="/readme/Screenshot_20221223_095934.png" align="left"
 width="200"
     hspace="10" vspace="10">](/readme/Screenshot_20221223_095934.png)
+[<img src="/readme/Screenshot_20221223_095914.png" align="center"
+width="200"
+    hspace="10" vspace="10">](/readme/Screenshot_20221223_095914.png)
 [<img src="/readme/Screenshot_20221223_100006.png" align="center"
 width="200"
     hspace="10" vspace="10">](/readme/Screenshot_20221223_100006.png)
