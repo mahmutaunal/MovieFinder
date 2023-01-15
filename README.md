@@ -11,6 +11,10 @@ No registration is required to use the Movie Search App application.
 
 Movie results are displayed by searching by movie name. Then, the page on which information such as the poster, duration and scenario of this movie is displayed is displayed.
 
+In this project, OMDb was used as the database. With the input entered by the user in the search section, a GET request is made to the API with the Retrofit library, and the required data is displayed, and recyclerview is used to display the retrieved data as a list. It is also provided with a GET request to show the detailed information of the required movie.
+
+MVVM architecture is used in this project.
+
 ## Features
 
 The android app lets you:
