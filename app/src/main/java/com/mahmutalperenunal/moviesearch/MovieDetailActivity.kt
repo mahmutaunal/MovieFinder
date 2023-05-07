@@ -1,8 +1,8 @@
 package com.mahmutalperenunal.moviesearch
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.mahmutalperenunal.moviesearch.api.RetrofitInstance
 import com.mahmutalperenunal.moviesearch.databinding.ActivityMovieDetailBinding
@@ -25,16 +25,20 @@ class MovieDetailActivity : AppCompatActivity() {
         binding = ActivityMovieDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //set toolbar
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        //get movie id
         id = intent.getStringExtra("Movie Id").toString()
 
+        //get movie data
         getMovieData()
     }
 
 
+    //back to mainActivity page
     override fun onSupportNavigateUp(): Boolean {
         finish()
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
@@ -45,9 +49,12 @@ class MovieDetailActivity : AppCompatActivity() {
     //get movie data
     private fun getMovieData() {
 
-        RetrofitInstance.instance.getMovieDetail(id, apiKey).enqueue(object:
+        RetrofitInstance.instance.getMovieDetail(id, apiKey).enqueue(object :
             Callback<MovieDetailData> {
-            override fun onResponse(call: Call<MovieDetailData>, response: Response<MovieDetailData>) {
+            override fun onResponse(
+                call: Call<MovieDetailData>,
+                response: Response<MovieDetailData>
+            ) {
 
                 response.body().let {
                     binding.movieTitle.text = response.body()!!.title

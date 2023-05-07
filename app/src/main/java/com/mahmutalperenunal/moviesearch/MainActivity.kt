@@ -2,7 +2,6 @@ package com.mahmutalperenunal.moviesearch
 
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -10,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mahmutalperenunal.moviesearch.adapter.MovieAdapter
@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //set toolbar
         setSupportActionBar(binding.toolbar)
 
         //get movie data
@@ -44,14 +45,17 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    //set toolbar menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         return true
     }
 
+
+    //set toolbar menu item click for change app theme
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.tema -> AlertDialog.Builder(this, R.style.CustomAlertDialog)
+            R.id.theme -> AlertDialog.Builder(this, R.style.CustomAlertDialog)
                 .setTitle(R.string.app_theme_text)
                 .setMessage(R.string.choose_app_theme_text)
                 .setPositiveButton(
@@ -81,7 +85,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     //get movie data
     private fun getMovieData() {
 
@@ -96,7 +99,8 @@ class MainActivity : AppCompatActivity() {
 
             binding.progressBar.visibility = View.GONE
 
-            Toast.makeText(applicationContext, R.string.enter_film_name_text, Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, R.string.enter_film_name_text, Toast.LENGTH_SHORT)
+                .show()
 
             binding.searchEditTextLayout.error = resources.getString(R.string.enter_film_name_text)
 
@@ -104,27 +108,46 @@ class MainActivity : AppCompatActivity() {
 
             binding.searchEditTextLayout.isErrorEnabled = false
 
-            RetrofitInstance.instance.getMovie(title, apiKey).enqueue(object: Callback<SearchData> {
-                override fun onResponse(call: Call<SearchData>, response: Response<SearchData>) {
+            RetrofitInstance.instance.getMovie(title, apiKey)
+                .enqueue(object : Callback<SearchData> {
+                    override fun onResponse(
+                        call: Call<SearchData>,
+                        response: Response<SearchData>
+                    ) {
 
-                    if (response.body()!!.response == "True") {
+                        if (response.body()!!.response == "True") {
 
-                        binding.noMovieImageView.visibility = View.GONE
-                        binding.noMovieTextView.visibility = View.GONE
+                            binding.noMovieImageView.visibility = View.GONE
+                            binding.noMovieTextView.visibility = View.GONE
 
-                        binding.nestedScrollView.visibility = View.VISIBLE
+                            binding.nestedScrollView.visibility = View.VISIBLE
 
-                        binding.progressBar.visibility = View.GONE
+                            binding.progressBar.visibility = View.GONE
 
-                        response.body().let {
-                            movieList.clear()
-                            movieList.addAll(it!!.data)
+                            response.body().let {
+                                movieList.clear()
+                                movieList.addAll(it!!.data)
+                            }
+
+                            val adapter = MovieAdapter(movieList, applicationContext)
+                            binding.recyclerView.adapter = adapter
+
+                        } else {
+
+                            binding.progressBar.visibility = View.GONE
+
+                            binding.noMovieImageView.visibility = View.VISIBLE
+                            binding.noMovieTextView.visibility = View.VISIBLE
+
+                            binding.nestedScrollView.visibility = View.GONE
+
                         }
 
-                        val adapter = MovieAdapter(movieList, applicationContext)
-                        binding.recyclerView.adapter = adapter
+                    }
 
-                    } else {
+                    override fun onFailure(call: Call<SearchData>, t: Throwable) {
+
+                        Log.e("Error", t.printStackTrace().toString())
 
                         binding.progressBar.visibility = View.GONE
 
@@ -135,22 +158,7 @@ class MainActivity : AppCompatActivity() {
 
                     }
 
-                }
-
-                override fun onFailure(call: Call<SearchData>, t: Throwable) {
-
-                    Log.e("Error", t.printStackTrace().toString())
-
-                    binding.progressBar.visibility = View.GONE
-
-                    binding.noMovieImageView.visibility = View.VISIBLE
-                    binding.noMovieTextView.visibility = View.VISIBLE
-
-                    binding.nestedScrollView.visibility = View.GONE
-
-                }
-
-            })
+                })
 
         }
 

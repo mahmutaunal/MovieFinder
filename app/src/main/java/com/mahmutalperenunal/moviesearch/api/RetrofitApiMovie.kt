@@ -6,8 +6,10 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+// Retrofit Api Interface
 interface RetrofitApiMovie {
 
+    // GET Request
     @GET("/")
     fun getMovie(
         @Query("s") search: String,
@@ -15,6 +17,7 @@ interface RetrofitApiMovie {
     ): Call<SearchData>
 
 
+    // GET Request
     @GET("/")
     fun getMovieDetail(
         @Query("i") id: String,

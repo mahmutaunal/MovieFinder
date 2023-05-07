@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Movie Search</string>
+    <string name="app_name">MovieFinder</string>
     <string name="enter_film_name_text">Film Adı Girin</string>
     <string name="search_text">Ara</string>
     <string name="no_film_text">Aranan Kritere Uygun Film Bulunmamaktadır!</string>
@@ -12,4 +12,5 @@
     <string name="system_theme_text">Sistem Teması</string>
     <string name="movie_genre_text">Movie Genre</string>
     <string name="movie_plot">Movie Plot</string>
+    <string name="theme_text">Tema</string>
 </resources>

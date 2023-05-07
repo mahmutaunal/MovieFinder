@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Movie Search</string>
+    <string name="app_name">MovieFinder</string>
     <string name="enter_film_name_text">Enter Film Name</string>
     <string name="search_text">Search</string>
     <string name="no_film_text">There is no movie matching the search criteria!</string>
@@ -13,4 +13,5 @@
     <string name="system_theme_text">System Theme</string>
     <string name="movie_genre_text">Movie Genre</string>
     <string name="movie_plot">Movie Plot</string>
+    <string name="theme_text">Theme</string>
 </resources>

@@ -14,12 +14,14 @@ import com.mahmutalperenunal.moviesearch.MovieDetailActivity
 import com.mahmutalperenunal.moviesearch.R
 import com.mahmutalperenunal.moviesearch.model.MovieData
 
+// MovieAdapter class is used to show movie list in RecyclerView
 class MovieAdapter(
     private var listMovie: ArrayList<MovieData>, private val context: Context
-): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
 
-    inner class MovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    // MovieViewHolder class is used to hold movie item views
+    inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val title: TextView = itemView.findViewById(R.id.movie_title)
         val year: TextView = itemView.findViewById(R.id.movie_release_date)
         val poster: ImageView = itemView.findViewById(R.id.movie_poster)
@@ -28,11 +30,15 @@ class MovieAdapter(
     }
 
 
+    // onCreateViewHolder is used to create a new ViewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        return MovieViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false))
+        return MovieViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
+        )
     }
 
 
+    // onBindViewHolder is used to bind data to ViewHolder
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
 
         holder.title.text = listMovie[position].title
@@ -55,6 +61,7 @@ class MovieAdapter(
     }
 
 
+    // getItemCount is used to get size of list
     override fun getItemCount(): Int {
         return listMovie.size
     }

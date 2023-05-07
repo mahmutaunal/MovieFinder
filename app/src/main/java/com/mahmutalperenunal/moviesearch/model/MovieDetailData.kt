@@ -2,7 +2,8 @@ package com.mahmutalperenunal.moviesearch.model
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieDetailData (
+// This class is used to store the data of the movie.
+data class MovieDetailData(
     @SerializedName("Title") val title: String,
     @SerializedName("Plot") val plot: String,
     @SerializedName("Year") val releaseDate: String,
